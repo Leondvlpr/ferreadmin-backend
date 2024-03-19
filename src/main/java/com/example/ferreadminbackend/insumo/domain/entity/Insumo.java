@@ -1,0 +1,105 @@
+package com.example.ferreadminbackend.insumo.domain.entity;
+
+import com.example.ferreadminbackend.stock.domain.entity.Stock;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "insumo")
+public class Insumo {
+
+
+    @Id
+    @Column(name = "id_insumo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idInsumo;
+
+    @OneToOne(mappedBy = "idInsumoStock")
+    private Stock idStockInsumo;
+
+    @NotNull(message = "El campo nombre es requerido")
+    private String nombre;
+    private String descripcion;
+
+    @Column(name = "precio_unitario")
+    private Long precioUnitario;
+
+    private String proveedor;
+
+    @Column(name = "cantidad_disponible")
+    private Long cantidadDisponible;
+
+    @Column(name = "cantidad_minima")
+    private Long cantidadMinima;
+
+    public Integer getIdInsumo() {
+        return this.idInsumo;
+    }
+
+    public void setIdInsumo(Integer idInsumo) {
+        this.idInsumo = idInsumo;
+    }
+
+    public Stock getIdStockInsumo() {
+        return this.idStockInsumo;
+    }
+
+    public void setIdStockInsumo(Stock idStockInsumo) {
+        this.idStockInsumo = idStockInsumo;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getPrecioUnitario() {
+        return this.precioUnitario;
+    }
+
+    public void setPrecioUnitario(Long precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    public String getProveedor() {
+        return this.proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Long getCantidadDisponible() {
+        return this.cantidadDisponible;
+    }
+
+    public void setCantidadDisponible(Long cantidadDisponible) {
+        this.cantidadDisponible = cantidadDisponible;
+    }
+
+    public Long getCantidadMinima() {
+        return this.cantidadMinima;
+    }
+
+    public void setCantidadMinima(Long cantidadMinima) {
+        this.cantidadMinima = cantidadMinima;
+    }
+}
