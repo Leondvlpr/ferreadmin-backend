@@ -1,12 +1,14 @@
 package com.example.ferreadminbackend.insumo.domain.entity;
 
 import com.example.ferreadminbackend.stock.domain.entity.Stock;
+import com.example.ferreadminbackend.venta.domain.entity.Venta;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +32,9 @@ public class Insumo {
 
     @Column(name = "precio_unitario")
     private Long precioUnitario;
+
+    @ManyToOne
+    private Venta idVenta;
 
     private String proveedor;
 
@@ -101,5 +106,13 @@ public class Insumo {
 
     public void setCantidadMinima(Long cantidadMinima) {
         this.cantidadMinima = cantidadMinima;
+    }
+
+    public Venta getIdVenta() {
+        return this.idVenta;
+    }
+
+    public void setIdVenta(Venta idVenta) {
+        this.idVenta = idVenta;
     }
 }
