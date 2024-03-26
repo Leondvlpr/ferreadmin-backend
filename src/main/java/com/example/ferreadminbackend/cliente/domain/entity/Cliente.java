@@ -21,7 +21,7 @@ public class Cliente {
     @Column(name = "id_cliente")
     private Long idCliente;
 
-    @OneToMany(mappedBy = "idVenta")
+    @OneToMany(mappedBy = "idCliente")
     private List<Venta> ventasCliente;
 
     @Column(name = "nombre_cliente")

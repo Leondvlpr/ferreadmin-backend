@@ -1,13 +1,13 @@
 package com.example.ferreadminbackend.insumo.domain.entity;
 
 import com.example.ferreadminbackend.stock.domain.entity.Stock;
-import com.example.ferreadminbackend.venta.domain.entity.Venta;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -30,13 +30,11 @@ public class Insumo {
     private String nombre;
     private String descripcion;
 
-    @Column(name = "precio_unitario")
     private Long precioUnitario;
 
     @ManyToOne
-    private Venta idVenta;
-
-    private String proveedor;
+    @JoinColumn(name = "id_proveedor")
+    private Proveedor proveedor;
 
     @Column(name = "cantidad_disponible")
     private Long cantidadDisponible;
@@ -84,14 +82,6 @@ public class Insumo {
         this.precioUnitario = precioUnitario;
     }
 
-    public String getProveedor() {
-        return this.proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
-    }
-
     public Long getCantidadDisponible() {
         return this.cantidadDisponible;
     }
@@ -108,11 +98,11 @@ public class Insumo {
         this.cantidadMinima = cantidadMinima;
     }
 
-    public Venta getIdVenta() {
-        return this.idVenta;
+    public Proveedor getProveedor() {
+        return this.proveedor;
     }
 
-    public void setIdVenta(Venta idVenta) {
-        this.idVenta = idVenta;
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 }

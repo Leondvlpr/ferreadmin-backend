@@ -1,4 +1,4 @@
-package com.example.ferreadminbackend.auth.infraestructure.config;
+package com.example.ferreadminbackend.auth;
 
 import java.util.Arrays;
 
