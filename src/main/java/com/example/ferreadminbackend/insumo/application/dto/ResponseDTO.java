@@ -1,52 +1,18 @@
 package com.example.ferreadminbackend.insumo.application.dto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-public class ResponseDTO <T> {
-    private String identificador;
-    private String codError;
-    private String msjError;
-    List<T> object;
+@Data
+@AllArgsConstructor
+public class ResponseDTO {
+    private Integer code;
+    private String msj;
+    private ProveedorDTO proveedor;
 
-    public ResponseDTO() {
-    }
-
-    public ResponseDTO(String identificador, String codError, String msjError, List<T> object) {
-        this.codError = codError;
-        this.identificador = identificador;
-        this.msjError = msjError;
-        this.object = object;
-    }
-
-    public String getIdentificador() {
-        return this.identificador;
-    }
-
-    public void setIdentificador(String identificador) {
-        this.identificador = identificador;
-    }
-
-    public String getCodError() {
-        return this.codError;
-    }
-
-    public void setCodError(String codError) {
-        this.codError = codError;
-    }
-
-    public String getMsjError() {
-        return this.msjError;
-    }
-
-    public void setMsjError(String msjError) {
-        this.msjError = msjError;
-    }
-
-    public List<T> getObject() {
-        return this.object;
-    }
-
-    public void setObject(List<T> object) {
-        this.object = object;
+    public ResponseDTO(Integer code, String msj) {
+        this.code = code;
+        this.msj = msj;
+        this.proveedor = null;
     }
 }

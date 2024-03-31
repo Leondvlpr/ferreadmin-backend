@@ -1,7 +1,5 @@
 package com.example.ferreadminbackend.insumo.domain.entity;
 
-import com.example.ferreadminbackend.stock.domain.entity.Stock;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -17,14 +14,10 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "insumo")
 public class Insumo {
 
-
     @Id
     @Column(name = "id_insumo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idInsumo;
-
-    @OneToOne(mappedBy = "idInsumoStock")
-    private Stock idStockInsumo;
 
     @NotNull(message = "El campo nombre es requerido")
     private String nombre;
@@ -48,14 +41,6 @@ public class Insumo {
 
     public void setIdInsumo(Integer idInsumo) {
         this.idInsumo = idInsumo;
-    }
-
-    public Stock getIdStockInsumo() {
-        return this.idStockInsumo;
-    }
-
-    public void setIdStockInsumo(Stock idStockInsumo) {
-        this.idStockInsumo = idStockInsumo;
     }
 
     public String getNombre() {

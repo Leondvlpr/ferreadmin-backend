@@ -1,27 +1,22 @@
 package com.example.ferreadminbackend.insumo.infraestructure.controller;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ferreadminbackend.insumo.application.dto.InsumoDTO;
+import com.example.ferreadminbackend.insumo.application.dto.ResponseDTO;
 import com.example.ferreadminbackend.insumo.application.service.DomainInsumoService;
 import com.example.ferreadminbackend.insumo.domain.entity.Insumo;
-import com.google.gson.Gson;
-
-import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@Validated
 @RequestMapping("/insumos")
 public class InsumoController {
 
@@ -34,36 +29,37 @@ public class InsumoController {
         return new ResponseEntity<>(insumos, HttpStatus.OK);
     }
 
-    @PostMapping()
-    public ResponseEntity<Optional<Insumo>> obtenerInsumo(@RequestBody String requestBody) {
+    // @PostMapping()
+    // public ResponseEntity<Optional<Insumo>> obtenerInsumo(@RequestBody String
+    // requestBody) {
 
-        Gson gson = new Gson();
+    // Gson gson = new Gson();
 
-        InsumoDTO insumoDTO = gson.fromJson(requestBody, InsumoDTO.class);
+    // InsumoDTO insumoDTO = gson.fromJson(requestBody, InsumoDTO.class);
 
-        Optional<Insumo> insumo = domainInsumoService.obtenerInsumo(insumoDTO.getIdInsumo());
+    // Optional<Insumo> insumo =
+    // domainInsumoService.obtenerInsumo(insumoDTO.getIdInsumo());
 
-        if (insumo.isPresent()) {
-            return new ResponseEntity<>(insumo, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    // if (insumo.isPresent()) {
+    // return new ResponseEntity<>(insumo, HttpStatus.OK);
+    // } else {
+    // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // }
 
-    }
+    // }
 
     @PostMapping("guardarInsumo")
-    public ResponseEntity<Insumo> guardarInsumo(@Valid @RequestBody String requestBody) {
+    public ResponseEntity<ResponseDTO> guardarInsumo(@RequestBody InsumoDTO insumo) {
 
-        Gson gson = new Gson();
-
-        Insumo insumo = gson.fromJson(requestBody, Insumo.class);
-
-        Insumo insumoGuardado = domainInsumoService.guardarInsumo(insumo);
-
-        if (insumoGuardado != null) {
-            return new ResponseEntity<>(insumo, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try {
+            ResponseDTO insumoGuardado = domainInsumoService.guardarInsumo(insumo);
+            System.out.println(insumoGuardado);
+            return ResponseEntity.ok(insumoGuardado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(404, e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDTO(500, "Ha ocurrido un error interno"));
         }
 
     }

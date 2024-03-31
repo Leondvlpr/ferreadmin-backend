@@ -1,4 +1,4 @@
-package com.example.ferreadminbackend.auth;
+package com.example.ferreadminbackend.auth.infraestructure.config;
 
 import java.util.Arrays;
 
@@ -21,7 +21,7 @@ public class CorsConfig {
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration("/*", corsConfiguration);
+        source.registerCorsConfiguration("/**", corsConfiguration);
 
         return source;
     }
