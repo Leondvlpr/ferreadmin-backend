@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "usuario_rol")
 public class Rol {
@@ -17,20 +19,4 @@ public class Rol {
 
     @Column(name = "nombre_rol")
     private String nombreRol;
-
-    public Long getIdRol() {
-        return this.idRol;
-    }
-
-    public void setIdRol(Long idRol) {
-        this.idRol = idRol;
-    }
-
-    public String getNombreRol() {
-        return this.nombreRol;
-    }
-
-    public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
-    }
 }

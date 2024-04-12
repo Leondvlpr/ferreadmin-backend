@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ferreadminbackend.insumo.application.dto.InsumoDTO;
 import com.example.ferreadminbackend.insumo.application.dto.ResponseDTO;
-import com.example.ferreadminbackend.insumo.application.service.DomainInsumoService;
+import com.example.ferreadminbackend.insumo.application.service.InsumoServiceImpl;
 import com.example.ferreadminbackend.insumo.domain.entity.Insumo;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class InsumoController {
 
     @Autowired
-    private DomainInsumoService domainInsumoService;
+    private InsumoServiceImpl insumoServiceImpl;
 
     @GetMapping()
     public ResponseEntity<List<Insumo>> obtenerInsumos() {
-        List<Insumo> insumos = domainInsumoService.obtenerInsumos();
+        List<Insumo> insumos = insumoServiceImpl.obtenerInsumos();
         return new ResponseEntity<>(insumos, HttpStatus.OK);
     }
 
@@ -38,7 +38,7 @@ public class InsumoController {
     // InsumoDTO insumoDTO = gson.fromJson(requestBody, InsumoDTO.class);
 
     // Optional<Insumo> insumo =
-    // domainInsumoService.obtenerInsumo(insumoDTO.getIdInsumo());
+    // insumoServiceImpl.obtenerInsumo(insumoDTO.getIdInsumo());
 
     // if (insumo.isPresent()) {
     // return new ResponseEntity<>(insumo, HttpStatus.OK);
@@ -52,7 +52,7 @@ public class InsumoController {
     public ResponseEntity<ResponseDTO> guardarInsumo(@RequestBody InsumoDTO insumo) {
 
         try {
-            ResponseDTO insumoGuardado = domainInsumoService.guardarInsumo(insumo);
+            ResponseDTO insumoGuardado = insumoServiceImpl.guardarInsumo(insumo);
             System.out.println(insumoGuardado);
             return ResponseEntity.ok(insumoGuardado);
         } catch (IllegalArgumentException e) {

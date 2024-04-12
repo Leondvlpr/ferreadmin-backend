@@ -14,7 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "venta")
 public class Venta {
@@ -44,68 +46,4 @@ public class Venta {
 
     @ManyToOne
     private Usuario cedulaUsuario;
-
-    public Long getIdVenta() {
-        return this.idVenta;
-    }
-
-    public void setIdVenta(Long idVenta) {
-        this.idVenta = idVenta;
-    }
-
-    public String getFechaVenta() {
-        return this.fechaVenta;
-    }
-
-    public void setFechaVenta(String fechaVenta) {
-        this.fechaVenta = fechaVenta;
-    }
-
-    public Cliente getIdCliente() {
-        return this.idCliente;
-    }
-
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public List<Insumo> getListaInsumos() {
-        return this.listaInsumos;
-    }
-
-    public void setListaInsumos(List<Insumo> listaInsumos) {
-        this.listaInsumos = listaInsumos;
-    }
-
-    public Long getCantidadVendida() {
-        return this.cantidadVendida;
-    }
-
-    public void setCantidadVendida(Long cantidadVendida) {
-        this.cantidadVendida = cantidadVendida;
-    }
-
-    public Long getTotalVenta() {
-        return this.totalVenta;
-    }
-
-    public void setTotalVenta(Long totalVenta) {
-        this.totalVenta = totalVenta;
-    }
-
-    public String getMetodoPago() {
-        return this.metodoPago;
-    }
-
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
-    public Usuario getCedulaUsuario() {
-        return this.cedulaUsuario;
-    }
-
-    public void setCedulaUsuario(Usuario cedulaUsuario) {
-        this.cedulaUsuario = cedulaUsuario;
-    }
 }

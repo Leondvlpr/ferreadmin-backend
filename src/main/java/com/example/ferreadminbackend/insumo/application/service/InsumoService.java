@@ -2,6 +2,7 @@ package com.example.ferreadminbackend.insumo.application.service;
 
 import java.util.List;
 // import java.util.Optional;
+import java.util.Optional;
 
 import com.example.ferreadminbackend.insumo.application.dto.InsumoDTO;
 import com.example.ferreadminbackend.insumo.application.dto.ResponseDTO;
@@ -11,7 +12,11 @@ public interface InsumoService {
 
     List<Insumo> obtenerInsumos();
 
-    // Optional<Insumo> obtenerInsumo(Integer idInsumo);
+    List<Insumo> obtenerInsumosPorIds(List<Integer> ids);
+
+    Optional<Insumo> obtenerInsumoPorId(Integer idInsumo);
 
     ResponseDTO guardarInsumo(InsumoDTO insumo);
+
+    ResponseDTO guardarInsumos(List<InsumoDTO> insumos);
 }

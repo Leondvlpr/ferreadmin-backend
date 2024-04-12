@@ -11,7 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -29,37 +31,5 @@ public class Cliente {
 
     @Column(name = "apellidos_cliente")
     private String apellidosCliente;
-
-    public Long getIdCliente() {
-        return this.idCliente;
-    }
-
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public String getNombreCliente() {
-        return this.nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
-    public String getApellidosCliente() {
-        return this.apellidosCliente;
-    }
-
-    public void setApellidosCliente(String apellidosCliente) {
-        this.apellidosCliente = apellidosCliente;
-    }
-
-    public List<Venta> getVentasCliente() {
-        return this.ventasCliente;
-    }
-
-    public void setVentasCliente(List<Venta> ventasCliente) {
-        this.ventasCliente = ventasCliente;
-    }
 
 }

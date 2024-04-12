@@ -10,7 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "stock")
 public class Stock {
@@ -25,29 +27,5 @@ public class Stock {
     private Insumo idInsumoStock;
 
     private Long cantidadDisponible;
-
-    public Integer getIdStock() {
-        return this.idStock;
-    }
-
-    public void setIdStock(Integer idStock) {
-        this.idStock = idStock;
-    }
-
-    public Insumo getIdInsumoStock() {
-        return this.idInsumoStock;
-    }
-
-    public void setIdInsumoStock(Insumo idInsumoStock) {
-        this.idInsumoStock = idInsumoStock;
-    }
-
-    public Long getCantidadDisponible() {
-        return this.cantidadDisponible;
-    }
-
-    public void setCantidadDisponible(Long cantidadDisponible) {
-        this.cantidadDisponible = cantidadDisponible;
-    }
 
 }

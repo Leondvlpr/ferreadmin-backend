@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "proveedor")
 public class Proveedor {
@@ -18,21 +20,5 @@ public class Proveedor {
 
     @Column(name = "nombre_proveedor")
     private String nombreProveedor;
-
-    public Long getIdProveedor() {
-        return this.idProveedor;
-    }
-
-    public void setIdProveedor(Long idProveedor) {
-        this.idProveedor = idProveedor;
-    }
-
-    public String getNombreProveedor() {
-        return this.nombreProveedor;
-    }
-
-    public void setNombreProveedor(String nombreProveedor) {
-        this.nombreProveedor = nombreProveedor;
-    }
 
 }

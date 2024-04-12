@@ -10,7 +10,7 @@ import com.example.ferreadminbackend.insumo.domain.entity.Proveedor;
 import com.example.ferreadminbackend.insumo.domain.repository.ProveedorRepository;
 
 @Service
-public class DomainProveedorService implements ProveedorService {
+public class ProveedorServiceImpl implements ProveedorService {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
