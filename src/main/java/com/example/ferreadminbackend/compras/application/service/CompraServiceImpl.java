@@ -49,6 +49,9 @@ public class CompraServiceImpl implements CompraService {
                         Insumo insumo = insumoServiceImpl.obtenerInsumoPorId(insumoCompra.getIdInsumo())
                                 .orElseThrow(() -> new IllegalArgumentException("El insumo no existe"));
 
+                        // REASIGNAR CANTIDAD DEL INSUMO
+                        insumo.setCantidadDisponible(insumo.getCantidadDisponible() + insumoCompra.getCantidad());
+
                         return insumo;
                     }).collect(Collectors.toList());
 
@@ -56,35 +59,12 @@ public class CompraServiceImpl implements CompraService {
                     .stream()
                     .mapToLong(Insumo::getPrecioUnitario).sum();
 
-            compraEntity.setDescripcionCompra(null);
             compraEntity.setFechaCompra(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             compraEntity.setInsumos(insumosCompra);
             compraEntity.setDescripcionCompra(compra.getDescripcionCompra());
             compraEntity.setTotalCompra(totalCompra);
-
             compraRepository.save(compraEntity);
-            // List<InsumoDTO> actualizarIdCompraInsumo = compra
-            // .getInsumos()
-            // .stream()
-            // .map(insumoCompra -> {
-            // Insumo insumo =
-            // insumoServiceImpl.obtenerInsumoPorId(insumoCompra.getIdInsumo())
-            // .orElseThrow(() -> new RuntimeException("Insumo no encontrado"));
 
-            // InsumoDTO insumoDTO = new InsumoDTO();
-
-            // insumoDTO.setCantidadDisponible(insumo.getCantidadDisponible());
-            // insumoDTO.setCantidadMinima(insumo.getCantidadMinima());
-            // insumoDTO.setDescripcion(insumo.getDescripcion());
-            // insumoDTO.setIdProveedor(insumo.getProveedor().getIdProveedor());
-            // insumoDTO.setNombre(insumo.getNombre());
-            // insumoDTO.setPrecioUnitario(insumo.getPrecioUnitario());
-            // insumo.setCompra(compraGuardada);
-
-            // return insumoDTO;
-            // }).collect(Collectors.toList());
-
-            // insumoServiceImpl.guardarInsumos(actualizarIdCompraInsumo);
             return new ResponseDTO(200, "La compra se guardó correctamente");
         } catch (Exception e) {
             System.out.println(e);

@@ -14,7 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -27,7 +26,6 @@ public class Insumo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idInsumo;
 
-    @NotNull(message = "El campo nombre es requerido")
     private String nombre;
     private String descripcion;
 
