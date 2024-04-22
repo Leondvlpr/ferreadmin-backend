@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla</title>
+</head>
+<body>
+    <h1>Detalle de Compra</h1>
+    <p>Nombre del Cliente: [[${nombreCliente}]]</p>
+    <p>Fecha: [[${fecha}]]</p>
+    <p>Total: [[${total}]]</p>
+    <table border="1">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+        <tr th:each="insumo : ${compra.insumos}">
+            <td th:text="${insumo.nombre}"></td>
+            <td th:text="${compra.totalCompra}"></td>
+        </tr>
+    </table>
+</body>
+</html>
