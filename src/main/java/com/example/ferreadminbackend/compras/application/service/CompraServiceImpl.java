@@ -63,18 +63,19 @@ public class CompraServiceImpl implements CompraService {
             compraEntity.setInsumos(insumosCompra);
             compraEntity.setDescripcionCompra(compra.getDescripcionCompra());
             compraEntity.setTotalCompra(totalCompra);
+            compraEntity.setNombreCliente(compra.getNombreCliente());
             compraRepository.save(compraEntity);
 
-            return new ResponseDTO(200, "La compra se guardó correctamente");
+            return new ResponseDTO(200, "La compra se guardó correctamente", null);
         } catch (Exception e) {
             System.out.println(e);
-            return new ResponseDTO(500, "Error interno al intentar guardar la compra");
+            return new ResponseDTO(500, "Error interno al intentar guardar la compra", null);
         }
     }
 
     @Override
     public ResponseDTO generarOrdenCompra() {
 
-        return new ResponseDTO(200, "La orden de compra se generó correctamente");
+        return new ResponseDTO(200, "La orden de compra se generó correctamente", null);
     }
 }

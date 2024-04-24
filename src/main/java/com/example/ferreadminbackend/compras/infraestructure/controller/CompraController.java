@@ -37,7 +37,7 @@ public class CompraController {
             return ResponseEntity.ok(compraGuardada);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ResponseDTO(500, "Ha ocurrido un error interno gurdando la compra"));
+                    .body(new ResponseDTO(500, "Ha ocurrido un error interno gurdando la compra", null));
         }
     }
 }

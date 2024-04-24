@@ -44,7 +44,7 @@ public class ProveedorController {
 
             return new ResponseDTO(200, "Proveedor encontrado", proveedorDTO);
         } catch (Exception e) {
-            return new ResponseDTO(404, "Proveedor no encontrado");
+            return new ResponseDTO(404, "Proveedor no encontrado", null);
         }
     }
 

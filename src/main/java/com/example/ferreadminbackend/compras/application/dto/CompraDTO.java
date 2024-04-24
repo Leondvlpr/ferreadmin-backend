@@ -10,4 +10,5 @@ import lombok.Data;
 public class CompraDTO {
     private List<InsumoCompraDTO> insumos;
     private String descripcionCompra;
+    private String nombreCliente;
 }

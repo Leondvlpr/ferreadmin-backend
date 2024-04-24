@@ -56,10 +56,10 @@ public class InsumoController {
             System.out.println(insumoGuardado);
             return ResponseEntity.ok(insumoGuardado);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(404, e.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(404, e.getMessage(), null));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ResponseDTO(500, "Ha ocurrido un error interno"));
+                    .body(new ResponseDTO(500, "Ha ocurrido un error interno", null));
         }
 
     }

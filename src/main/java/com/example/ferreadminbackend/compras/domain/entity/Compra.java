@@ -31,6 +31,9 @@ public class Compra {
     @Column(name = "descripcion_compra")
     private String descripcionCompra;
 
+    @Column(name = "nombre_cliente")
+    private String nombreCliente;
+
     @ManyToMany()
     @JoinTable(
         name = "detalle_compra",

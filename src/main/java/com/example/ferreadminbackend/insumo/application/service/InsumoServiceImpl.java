@@ -54,10 +54,10 @@ public class InsumoServiceImpl implements InsumoService {
             insumoEntity.setProveedor(proveedor);
             insumoRepository.save(insumoEntity);
 
-            return new ResponseDTO(200, "El insumo se a guardado correctamente");
+            return new ResponseDTO(200, "El insumo se a guardado correctamente", null);
         } catch (Exception e) {
             System.out.println(e);
-            return new ResponseDTO(500, "Ha ocurrido un error interno");
+            return new ResponseDTO(500, "Ha ocurrido un error interno", null);
         }
     }
 
@@ -85,10 +85,10 @@ public class InsumoServiceImpl implements InsumoService {
 
             insumoRepository.saveAll(listaInsumos);
 
-            return new ResponseDTO(200, "El insumo se a guardado correctamente");
+            return new ResponseDTO(200, "El insumo se a guardado correctamente", null);
         } catch (Exception e) {
             System.out.println(e);
-            return new ResponseDTO(500, "Ha ocurrido un error interno");
+            return new ResponseDTO(500, "Ha ocurrido un error interno", null);
         }
     }
 

@@ -1,14 +1,111 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Plantilla</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <style>
+
+        body {
+            font-family: "Public Sans", Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            width: 80%;
+        }
+
+        td {
+          font-size: 12px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+
+        .displayFlex {
+            display: flex;
+        }
+
+        .infoCompanyDiv {
+            display: flex; 
+            width: 100%; 
+        }
+    </style>
 </head>
 <body>
-    <h1>Detalle de Compra</h1>
-    <p>Nombre del Cliente: [[${nombreCliente}]]</p>
+    <div class="infoCompanyDiv">
+        <h1>Orden de compra</h1>
+        <div style="margin-left: 160px; margin-top: 30px;">
+          <div class="displayFlex">
+              <p><b>N° de orden:</b></p>
+              <p style="margin-left: 20px" th:text="${compra.idCompra}">Id orden back</p>
+          </div>
+            <div class="displayFlex">
+                <p><b>Fecha orden compra:</b></p>
+                <p style="margin-left: 20px" th:text="${compra.fechaCompra}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="infoCompanyDiv">
+        <div style="width: 50%">
+            <h2>Datos del proveedor</h2>
+            <div class="displayFlex">
+                <p>Nombre o razón social</p>
+                <p style="margin-left: 20px">Nombre proveedor back</p>
+            </div>
+            <div class="displayFlex">
+                <p>NIT / CC</p>
+                <p style="margin-left: 20px">Numero back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Dirección</p>
+                <p style="margin-left: 20px">Dirección back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Teléfono</p>
+                <p style="margin-left: 20px">Teléfono back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Correo electrónico</p>
+                <p style="margin-left: 20px">Correo back</p>
+            </div>
+        </div>
+
+        <div style="width: 50%">
+            <h2>Datos del cliente</h2>
+
+            <div class="displayFlex">
+                <p>Nombre o razón social</p>
+                <p style="margin-left: 20px">Nombre proveedor back</p>
+            </div>
+            <div class="displayFlex">
+                <p>NIT / CC</p>
+                <p style="margin-left: 20px">Numero back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Dirección</p>
+                <p style="margin-left: 20px">Dirección back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Teléfono</p>
+                <p style="margin-left: 20px">Teléfono back</p>
+            </div>
+            <div class="displayFlex">
+                <p>Correo electrónico</p>
+                <p style="margin-left: 20px">Correo back</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <p>Nombre del Cliente: [[${compra.nombreCliente}]]</p>
     <p>Fecha: [[${fecha}]]</p>
-    <p>Total: [[${total}]]</p>
+    <p>Total: [[${total}]]</p> -->
     <table border="1">
         <tr>
             <th>Producto</th>
