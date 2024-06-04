@@ -43,11 +43,11 @@
         <div style="margin-left: 160px; margin-top: 30px;">
           <div class="displayFlex">
               <p><b>N° de orden:</b></p>
-              <p style="margin-left: 20px" th:text="${compra.idCompra}">Id orden back</p>
+              <p style="margin-left: 20px" th:text="${compra.idPurchase}">Id orden back</p>
           </div>
             <div class="displayFlex">
                 <p><b>Fecha orden compra:</b></p>
-                <p style="margin-left: 20px" th:text="${compra.fechaCompra}"></p>
+                <p style="margin-left: 20px" th:text="${compra.purchaseDate}"></p>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
         </div>
     </div>
 
-    <!-- <p>Nombre del Cliente: [[${compra.nombreCliente}]]</p>
+    <!-- <p>Nombre del Cliente: [[${compra.customerName}]]</p>
     <p>Fecha: [[${fecha}]]</p>
     <p>Total: [[${total}]]</p> -->
     <table border="1">

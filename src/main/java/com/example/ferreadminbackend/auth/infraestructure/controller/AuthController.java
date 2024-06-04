@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ferreadminbackend.auth.application.dto.LoginDTO;
 import com.example.ferreadminbackend.auth.infraestructure.config.JwtUtil;
-import com.example.ferreadminbackend.usuario.domain.entity.Usuario;
-import com.example.ferreadminbackend.usuario.domain.repository.UsuarioRepository;
+import com.example.ferreadminbackend.user.domain.entity.UserEntity;
+import com.example.ferreadminbackend.user.domain.repository.UserRepository;
 
 @RestController
 @RequestMapping("/auth")
@@ -27,10 +27,10 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
-    private UsuarioRepository usuarioRepository;
+    private UserRepository usuarioRepository;
 
     // @Autowired
-    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UsuarioRepository usuarioRepository) {
+    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserRepository usuarioRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.usuarioRepository = usuarioRepository;
@@ -41,15 +41,15 @@ public class AuthController {
         UsernamePasswordAuthenticationToken login = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
         Authentication authentication = this.authenticationManager.authenticate(login);
 
-        Optional <Usuario> optionalUsuario = usuarioRepository.findByUsername(loginDto.getUsername());
+        Optional <UserEntity> optionalUsuario = usuarioRepository.findByUsername(loginDto.getUsername());
 
        if (optionalUsuario.isPresent()) {
-            Usuario usuario = optionalUsuario.get();
+            UserEntity usuario = optionalUsuario.get();
             String jwt = this.jwtUtil.create(usuario.getUsername());
 
             Map<String, Object> userData = new HashMap<>();
             userData.put("username", usuario.getUsername());
-            userData.put("correo", usuario.getCorreo());
+            userData.put("correo", usuario.getEmail());
 
             Map<String, Object> data = new HashMap<>();
             data.put("usuario", userData);
